@@ -16,19 +16,13 @@
     }
   }
 }
-
       <p>Il faut d'abord entrer l'adresse de son robot sous ROS dans la partie ip</p>
-      <br>
       <p>ensuite il faut entrer le type de message que l'on souhaite envoyer dans la partie messageType</p>      
-      <br>
       <p>et enfin le nom du topic dans lequel on veut publier les messages dans la partie topic <code>Attention, ne pas oublier le '\' avant le nom du topic</p>
       <br>
-      <br>
       <p>Explication du plugin:</p>
-      <br>
       <p>Le plugin permet d'envoyer d'envoyer des messages sur un topic que l'on aura défini, ces messages pourront être traité dans un listener placé dans le robot (pour plus d'information, il faut aller voir les liens en bas de page)</p>            
-      <br>
-      <p>J'ai placé un mode ROS pour controler le robot sans à avoir à dire SARAH avant chaque commande <code>Attention à bien articuler le premier mot de la commande</code></p>      
+      <p>J'ai placé un mode ROS pour controler le robot sans à avoir à dire SARAH avant chaque commande <code>Attention à bien articuler le premier mot de la commande</code></p>
       <p>Pour l'activer il faut dire :</p>
         <ul>
           <li><i>Sarah, active le mode ROS</i></li>
@@ -39,19 +33,14 @@
           <li><i>Merci ce sera tout Sarah</i></li>
         </ul>
       </p>
-      <br>
-      <br>      
       <p>Dans le fichier js j'ai créé une connexion avec le server WebSocket de la rosbridge_suite et j'ai suivi le protocol d'envoi</p> 
       <p>on place son appareil dans la phrase à dire et son port dans la variable commande</p>
-      <br>
-      <br>
       <p>Pour les intéressé, je place ici tous les liens dont je me suis servi ici:</p>
         <ul>
           <li><i>les divers tuto ROS: http://wiki.ros.org/ROS/Tutorials</i></li>        
           <li><i>la rosbridge_suite: https://github.com/RobotWebTools/rosbridge_suite</i></li>
           <li><i>le protocol de communication avec ROS: http://rosbridge.org/doku.php?id=rosbridge_v2.0_example_commands</i></li>
         </ul>      
-      <br> 
       <p>Je remercie Jean-Philippe Encausse pour son aide pour la librairie websocket !</p>      
     </div>
   </div>
