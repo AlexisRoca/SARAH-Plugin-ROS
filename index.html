@@ -1,69 +1,58 @@
-<div id="TvPhilips_Control">
+<div id="ROS">
 
   <div class="row-fluid">
     <div class="span11">
-      <p>Le plugin <b>TvPhilips_Control</b> permet de controler totalement sa télévision Philips</p>
-      <p>L'ip de la télévision est à placé dans le fichier .prop<i>TvPhilips_Control.prop</i> :</p>
+      <p>Le plugin <b>ROS</b> permet d'envoyer des messages au server rosbridge_suite de ROS</p>
+      <p>Différents paramètres sont à régler avant d'utiliser le plugin, il faut les rentrer dans le fichier<i>ROS.prop</i> :</p>
       <pre>
 {
   "modules": { 
-    "TvPhilips_Control": {
-      "description": "Controle des televisions Philips",
+    "ros": {
+      "description": "Envoyer des messages sur un topic ros",
       "version": "1.0",
-      "ip": "192.168.x.x"
+      "ip": "192.168.1.52",
+      "messageType" : "std_msgs/String",
+      "topic" : "/base_controller"
     }
   }
 }
-      </pre>
-      <p>Explication du pluggin:</p>
-      <p>J'ai ajouté un mode Télévision pour controler la télé sans à avoir à dire SARAH avant chaque commande <code>Attention à bien articuler le premier mot de la commande</code></p>      
-      <p>Pour l'activer il faut dire  <i>TvPhilips_Control.xml</i> :
+
+      <p>Il faut d'abord entrer l'adresse de son robot sous ROS dans la partie ip</p>
+      <br>
+      <p>ensuite il faut entrer le type de message que l'on souhaite envoyer dans la partie messageType</p>      
+      <br>
+      <p>et enfin le nom du topic dans lequel on veut publier les messages dans la partie topic <code>Attention, ne pas oublier le '\' avant le nom du topic</p>
+      <br>
+      <br>
+      <p>Explication du plugin:</p>
+      <br>
+      <p>Le plugin permet d'envoyer d'envoyer des messages sur un topic que l'on aura défini, ces messages pourront être traité dans un listener placé dans le robot (pour plus d'information, il faut aller voir les liens en bas de page)</p>            
+      <br>
+      <p>J'ai placé un mode ROS pour controler le robot sans à avoir à dire SARAH avant chaque commande <code>Attention à bien articuler le premier mot de la commande</code></p>      
+      <p>Pour l'activer il faut dire :</p>
         <ul>
-          <li><i>Sarah, active le mode television</i></li>
+          <li><i>Sarah, active le mode ROS</i></li>
         </ul>
       </p>
-      <p>Et pour en sortir<i>TvPhilips_Control.xml</i> :
+      <p>Et pour en sortir<i>ROS.xml</i> :
         <ul>
           <li><i>Merci ce sera tout Sarah</i></li>
         </ul>
       </p>
       <br>
-      <p>Dans le fichier XML il faut ajouter les appareils qui sont branché à votre télévision ainsi que leur port sur lequel il sont branchés</p> 
-      <p>Exemple:</p>
-      <pre>
-&lt;item&gt;affiche la x box trois cent soixante&lt;tag&gt;out.action.command=&quot;hdmi1&quot;&lt;/tag&gt;&lt;/item&gt;
-&lt;item&gt;met la x box trois cent soixante&lt;tag&gt;out.action.command=&quot;hdmi1&quot;&lt;/tag&gt;&lt;/item&gt;
-&lt;item&gt;remet la x box trois cent soixante&lt;tag&gt;out.action.command=&quot;hdmi1&quot;&lt;/tag&gt;&lt;/item&gt;
-&lt;item&gt;affiche la x box ouane&lt;tag&gt;out.action.command=&quot;hdmi2&quot;&lt;/tag&gt;&lt;/item&gt;
-&lt;item&gt;met la x box ouane&lt;tag&gt;out.action.command=&quot;hdmi2&quot;&lt;/tag&gt;&lt;/item&gt;
-&lt;item&gt;remet la x box ouane&lt;tag&gt;out.action.command=&quot;hdmi2&quot;&lt;/tag&gt;&lt;/item&gt;
-&lt;item&gt;affiche la yoga&lt;tag&gt;out.action.command=&quot;hdmi3&quot;&lt;/tag&gt;&lt;/item&gt;
-&lt;item&gt;met la yoga&lt;tag&gt;out.action.command=&quot;hdmi3&quot;&lt;/tag&gt;&lt;/item&gt; 
-&lt;item&gt;remet la yoga&lt;tag&gt;out.action.command=&quot;hdmi3&quot;&lt;/tag&gt;&lt;/item&gt; 
-&lt;item&gt;affiche la télé&lt;tag&gt;out.action.command=&quot;tv&quot;&lt;/tag&gt;&lt;/item&gt;
-&lt;item&gt;met la télé&lt;tag&gt;out.action.command=&quot;tv&quot;&lt;/tag&gt;&lt;/item&gt; 
-&lt;item&gt;remet la télé&lt;tag&gt;out.action.command=&quot;tv&quot;&lt;/tag&gt;&lt;/item&gt; 
-      </pre>
+      <br>      
+      <p>Dans le fichier js j'ai créé une connexion avec le server WebSocket de la rosbridge_suite et j'ai suivi le protocol d'envoi</p> 
       <p>on place son appareil dans la phrase à dire et son port dans la variable commande</p>
-      <p>Voici la liste des sources</p>
-      <pre> 
-tv
-satellite
-hdmi1
-hdmi2
-hdmi3
-hdmiside
-ext1
-ext2
-ypbpr
-vga
-      </pre>    
       <br>
-      <p>Malheureusement je n'ai pas réussi  à trouver de solution pour les chaines à nombre (exemple pour aller sur TMC - chaine numero 10)</p>
+      <br>
+      <p>Pour les intéressé, je place ici tous les liens dont je me suis servi ici:</p>
+        <ul>
+          <li><i>les divers tuto ROS: http://wiki.ros.org/ROS/Tutorials</i></li>        
+          <li><i>la rosbridge_suite: https://github.com/RobotWebTools/rosbridge_suite</i></li>
+          <li><i>le protocol de communication avec ROS: http://rosbridge.org/doku.php?id=rosbridge_v2.0_example_commands</i></li>
+        </ul>      
       <br> 
-      <p>Pour les intéressé, l'api des télévision philips se trouve sur à l'adresse de votre télévision sur le port 1925 (exemple: 192.168.0.1:1925)</p>
-      <br> 
-      <p>Je remercie Jerome Veyret pour ses conseils et encouragements ainsi que Irhon Dril pour sa version du plugin de controle des télé philips (travail dont je me suis fortement inspiré! Et bien entendu Jean-Philippe Encausse pour son travail sur S.A.R.A.H (espece de tueur de dimanche =P).</p>      
+      <p>Je remercie Jean-Philippe Encausse pour son aide pour la librairie websocket !</p>      
     </div>
   </div>
 
