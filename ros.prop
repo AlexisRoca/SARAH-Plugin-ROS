@@ -3,7 +3,7 @@
     "ros": {
       "description": "Envoyer des messages sur un topic ros",
       "version": "1.0",
-      "ip": "192.168.1.52",
+      "ip": "192.168.x.x",
       "messageType" : "std_msgs/String",
       "topic" : "/base_controller"
     }
