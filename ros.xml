@@ -1,0 +1,27 @@
+<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="ros" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+  <rule id="ros" scope="public">
+    <example>Sarah fais avancer le robot</example>
+    <tag>out.action=new Object(); </tag>
+
+    <item>SARAH</item>
+
+    <one-of>
+
+      <item>
+          active le mode rosse
+          <tag>out.action._attributes.context = "lazyros.xml"</tag>
+          <tag>out.action.command = "moderos";
+               out.action._attributes.play="/medias/transformers.mp3";
+          </tag>
+      </item>
+
+	    <item>fais avancer le robot<tag>out.action.command="up"</tag></item>
+	    <item>fais reculer le robot<tag>out.action.command="down"</tag></item>
+	    <item>fais tourner le robot a droite<tag>out.action.command="right"</tag></item> 
+      <item>fais tourner le robot a gauche<tag>out.action.command="left"</tag></item> 
+	    <item>arrête le robot<tag>out.action.command="null"</tag></item>
+    </one-of>
+
+    <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/ros";</tag>
+  </rule> 
+</grammar> 

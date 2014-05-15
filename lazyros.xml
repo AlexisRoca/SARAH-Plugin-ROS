@@ -1,0 +1,25 @@
+<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="ros" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+  <rule id="ros" scope="public">
+    <example>Sarah fais avancer le robot</example>
+    <tag>out.action=new Object(); </tag>
+ 
+    <one-of>
+
+      <item>
+        Merci ça sera tout, SARAH
+        <tag>out.action._attributes.context = "default"</tag>
+          <tag>out.action.command = "modeSARAH";</tag>
+      </item>
+
+
+      <item>avance<tag>out.action.command="up"</tag></item>
+      <item>recule<tag>out.action.command="down"</tag></item>
+      <item>droite<tag>out.action.command="right"</tag></item>
+      <item>gauche<tag>out.action.command="left"</tag></item> 
+      <item>arrête<tag>out.action.command="null"</tag></item>
+
+    </one-of>
+
+    <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/ros";</tag>
+  </rule> 
+</grammar> 
